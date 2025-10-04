@@ -14,3 +14,16 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## YouTube Sync (Serverless)
+
+This site uses a Netlify function to call the YouTube Data API v3 and return recent uploads.
+
+### Steps
+1. Create a `.env` file (copy from `.env.example`).
+2. Add:
+   - `YT_API_KEY=...` (from Google Cloud → APIs & Services → Credentials)
+   - `YT_CHANNEL_ID=...` (the channel ID, not the @handle)
+3. Local dev uses `netlify dev` to serve functions:
+   ```bash
+   npm run dev:nl
