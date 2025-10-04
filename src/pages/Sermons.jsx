@@ -1,17 +1,44 @@
 // src/pages/Sermons.jsx
+import { useEffect, useState } from 'react'
 import RootLayout from '../layouts/RootLayout.jsx'
+import { getEpisodes } from '../lib/podcast.js'
+import EpisodeCard from '../ui/EpisodeCard.jsx'
 
 export default function Sermons() {
+  const [data, setData] = useState({ title: 'Podcast', episodes: [] })
+  const [status, setStatus] = useState('loading') // loading | ready | error
+
+  useEffect(() => {
+    let mounted = true
+    getEpisodes()
+      .then((json) => {
+        if (mounted) {
+          setData(json)
+          setStatus('ready')
+        }
+      })
+      .catch(() => setStatus('error'))
+    return () => (mounted = false)
+  }, [])
+
   return (
     <RootLayout>
-      <section className="space-y-4">
-        <h1 className="text-2xl font-bold">Sermons (Podcast)</h1>
-        <p className="text-slate-600">
-          This page will auto-update from the podcast RSS. Audio player + download coming next.
-        </p>
-        <ul className="list-disc pl-6">
-          <li>Sample Sermon — placeholder</li>
-        </ul>
+      <section className="space-y-6">
+        <header>
+          <h1 className="text-2xl font-bold">Sermons (Podcast)</h1>
+          <p className="muted">Auto-updating from the church podcast RSS.</p>
+        </header>
+
+        {status === 'loading' && <p className="muted">Loading episodes…</p>}
+        {status === 'error' && <p className="text-red-600">Could not load episodes.</p>}
+
+        {status === 'ready' && (
+          <div className="grid md:grid-cols-2 gap-6">
+            {data.episodes.map((ep) => (
+              <EpisodeCard key={ep.id} ep={ep} />
+            ))}
+          </div>
+        )}
       </section>
     </RootLayout>
   )
