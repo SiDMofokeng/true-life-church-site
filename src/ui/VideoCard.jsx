@@ -4,7 +4,7 @@ export default function VideoCard({ v, onOpen }) {
     <button
       onClick={() => onOpen?.(v)}
       className="text-left card hover:shadow transition"
-      aria-label={`Play ${v.title}`}
+      aria-label={`Open ${v.title} in player`}
     >
       <div className="aspect-video rounded-xl overflow-hidden bg-slate-200">
         {v.thumbnail && (

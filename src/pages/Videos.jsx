@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react'
 import RootLayout from '../layouts/RootLayout.jsx'
 import { getVideos } from '../lib/youtube.js'
 import VideoCard from '../ui/VideoCard.jsx'
+import VideoModal from '../ui/VideoModal.jsx'
 
 export default function Videos() {
   const [list, setList] = useState([])
   const [status, setStatus] = useState('loading') // loading | ready | error
+  const [active, setActive] = useState(null)      // currently open video
 
   useEffect(() => {
     let mounted = true
@@ -35,10 +37,12 @@ export default function Videos() {
         {status === 'ready' && (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {list.map((v) => (
-              <VideoCard key={v.id} v={v} onOpen={(v) => window.open(v.url, '_blank')} />
+              <VideoCard key={v.id} v={v} onOpen={(v) => setActive(v)} />
             ))}
           </div>
         )}
+
+        <VideoModal open={!!active} video={active} onClose={() => setActive(null)} />
       </section>
     </RootLayout>
   )

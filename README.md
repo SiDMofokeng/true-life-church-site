@@ -27,3 +27,15 @@ This site uses a Netlify function to call the YouTube Data API v3 and return rec
 3. Local dev uses `netlify dev` to serve functions:
    ```bash
    npm run dev:nl
+
+## Deploy (Netlify)
+
+1) Install CLI (already in devDependencies): `npm run dev:nl` for local functions.
+2) Log in: `npx netlify login`
+3) Link or create a site: `npx netlify init`
+4) Set env vars:
+
+### In-page YouTube player
+- Click any video card to open an in-page modal player.
+- Close with backdrop click or `Esc`.
+- Autoplay is enabled in the embed URL. Browsers may gate it if sound is blocked.

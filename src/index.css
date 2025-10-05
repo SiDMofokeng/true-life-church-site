@@ -9,3 +9,5 @@ body { @apply antialiased text-slate-800 bg-slate-50; }
 .btn-primary { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white hover:bg-sky-700 transition; }
 .card { @apply rounded-2xl border p-6 shadow-sm bg-white; }
 .muted { @apply text-slate-600; }
+/* Accessibility: visible focus ring */
+:focus-visible { outline: 2px solid rgb(59 130 246); outline-offset: 2px; }
