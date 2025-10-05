@@ -6,7 +6,7 @@ export default function EpisodeCard({ ep }) {
   const eid = b64u.encode(ep.id || ep.link || ep.title)
   return (
     <article className="card">
-      <h3 className="font-semibold">{ep.title}</h3>
+      <h3 className="font-semibold mt-3">{v?.title || ep?.title}</h3>
       <p className="muted text-sm">{formatDate(ep.pubDate)} {ep.duration ? `• ${ep.duration}` : ''}</p>
 
       <audio className="w-full mt-3" controls preload="none" src={ep.audioUrl}>

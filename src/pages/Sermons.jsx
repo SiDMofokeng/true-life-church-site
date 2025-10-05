@@ -26,8 +26,8 @@ export default function Sermons() {
   return (
     <RootLayout>
       <section className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-bold">Sermons (Podcast)</h1>
+      <header className="space-y-1">
+        <h1 className="text-3xl font-bold">Sermons (Podcast)</h1>
         <p className="muted">
           Auto-updating from our podcast feed{status==='ready' ? ` — ${data.episodes.length} messages` : ''}.
         </p>

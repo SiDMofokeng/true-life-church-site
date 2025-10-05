@@ -27,10 +27,10 @@ export default function Videos() {
   return (
     <RootLayout>
       <section className="space-y-6">
-        <header>
-          <h1 className="text-2xl font-bold">Videos</h1>
-          <p className="muted">Latest uploads from our YouTube channel.</p>
-        </header>
+      <header className="space-y-1">
+        <h1 className="text-3xl font-bold">Videos</h1>
+        <p className="muted">Latest uploads from our YouTube channel.</p>
+      </header>
 
         {status === 'loading' && <p className="muted">Loading videos…</p>}
         {status === 'error' && <p className="text-red-600">Could not load videos.</p>}

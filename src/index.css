@@ -10,7 +10,10 @@
   --muted: rgb(100 116 139);  /* slate-500/600 */
 }
 
-body { color: var(--text); }
+body { 
+  color: var(--text);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
 
 .btn-primary { 
   border-radius: var(--radius);
@@ -32,3 +35,9 @@ body { @apply antialiased text-slate-800 bg-slate-50; }
 .muted { @apply text-slate-600; }
 /* Accessibility: visible focus ring */
 :focus-visible { outline: 2px solid rgb(59 130 246); outline-offset: 2px; }
+
+.btn-outline {
+  border-radius: var(--radius);
+  @apply inline-flex items-center gap-2 px-4 py-2 border transition;
+}
+.btn-outline:hover { @apply bg-slate-100; }
