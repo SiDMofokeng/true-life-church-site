@@ -9,6 +9,7 @@ export default function Videos() {
   const [list, setList] = useState([])
   const [status, setStatus] = useState('loading') // loading | ready | error
   const [active, setActive] = useState(null)      // currently open video
+  useEffect(() => { document.title = 'True Life Church' }, [])
 
   useEffect(() => {
     let mounted = true

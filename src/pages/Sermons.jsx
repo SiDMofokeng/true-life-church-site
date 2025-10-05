@@ -8,6 +8,8 @@ export default function Sermons() {
   const [data, setData] = useState({ title: 'Podcast', episodes: [] })
   const [status, setStatus] = useState('loading') // loading | ready | error
 
+  useEffect(() => { document.title = 'True Life Church' }, [])
+
   useEffect(() => {
     let mounted = true
     getEpisodes()
@@ -24,10 +26,12 @@ export default function Sermons() {
   return (
     <RootLayout>
       <section className="space-y-6">
-        <header>
-          <h1 className="text-2xl font-bold">Sermons (Podcast)</h1>
-          <p className="muted">Auto-updating from the church podcast RSS.</p>
-        </header>
+      <header>
+        <h1 className="text-2xl font-bold">Sermons (Podcast)</h1>
+        <p className="muted">
+          Auto-updating from our podcast feed{status==='ready' ? ` — ${data.episodes.length} messages` : ''}.
+        </p>
+      </header>
 
         {status === 'loading' && <p className="muted">Loading episodes…</p>}
         {status === 'error' && <p className="text-red-600">Could not load episodes.</p>}

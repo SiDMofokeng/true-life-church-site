@@ -1,5 +1,9 @@
+import { Link } from 'react-router-dom'
+import { b64u } from '../lib/base64url.js'
+
 // src/ui/EpisodeCard.jsx
 export default function EpisodeCard({ ep }) {
+  const eid = b64u.encode(ep.id || ep.link || ep.title)
   return (
     <article className="card">
       <h3 className="font-semibold">{ep.title}</h3>
@@ -10,23 +14,15 @@ export default function EpisodeCard({ ep }) {
       </audio>
 
       <div className="flex gap-3 mt-4">
-        <a className="btn-primary" href={ep.audioUrl} download>
-          Download
-        </a>
+        <a className="btn-primary" href={ep.audioUrl} download={toFileName(ep.title)+'.mp3'}>Download</a>
         {ep.link && (
-          <a className="px-4 py-2 rounded-xl border" href={ep.link} target="_blank" rel="noreferrer">
-            Show notes
-          </a>
+          <a className="px-4 py-2 rounded-xl border" href={ep.link} target="_blank" rel="noreferrer">Show notes</a>
         )}
+        <Link className="px-4 py-2 rounded-xl border" to={`/sermons/${eid}`}>Details</Link>
       </div>
     </article>
   )
 }
 
-function formatDate(d) {
-  try {
-    return new Date(d).toLocaleDateString()
-  } catch {
-    return d
-  }
-}
+function formatDate(d){ try { return new Date(d).toLocaleDateString() } catch { return d } }
+function toFileName(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') }

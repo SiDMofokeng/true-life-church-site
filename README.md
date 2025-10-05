@@ -39,3 +39,7 @@ This site uses a Netlify function to call the YouTube Data API v3 and return rec
 - Click any video card to open an in-page modal player.
 - Close with backdrop click or `Esc`.
 - Autoplay is enabled in the embed URL. Browsers may gate it if sound is blocked.
+
+### Podcast: Episode Details
+- Each episode now links to `/sermons/:eid` where `eid` is a base64url of the episode id.
+- Detail page includes audio player, clean download filename, and share links (WhatsApp, X, Facebook).

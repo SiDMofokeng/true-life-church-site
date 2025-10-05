@@ -10,10 +10,13 @@ import Sermons from './pages/Sermons.jsx'
 import Videos from './pages/Videos.jsx'
 import NotFound from './pages/NotFound.jsx'
 
+import SermonDetail from './pages/SermonDetail.jsx'
+
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
   { path: '/about', element: <About /> },
   { path: '/sermons', element: <Sermons /> },
+  { path: '/sermons/:eid', element: <SermonDetail /> },
   { path: '/videos', element: <Videos /> },
   { path: '*', element: <NotFound /> },
 ])

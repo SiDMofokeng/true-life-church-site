@@ -1,7 +1,9 @@
 // src/pages/Home.jsx
+import { useEffect } from 'react'
 import RootLayout from '../layouts/RootLayout.jsx'
 
 export default function Home() {
+  useEffect(() => { document.title = 'True Life Church' }, [])
   return (
     <RootLayout>
       <section className="space-y-8">
