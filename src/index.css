@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+:root{
+  --brand: #0ea5e9;           /* primary brand (sky-500-ish) */
+  --brand-dark: #0369a1;      /* hover/active */
+  --radius: 1rem;             /* cards/buttons rounded */
+
+  /* text colors */
+  --text: rgb(30 41 59);      /* slate-800 */
+  --muted: rgb(100 116 139);  /* slate-500/600 */
+}
+
+body { color: var(--text); }
+
+.btn-primary { 
+  border-radius: var(--radius);
+  @apply inline-flex items-center gap-2 px-4 py-2 text-white transition;
+  background: var(--brand);
+}
+.btn-primary:hover { background: var(--brand-dark); }
+
+.card { border-radius: var(--radius); }
+
 /* Global resets & helpers */
 html, body, #root { height: 100%; }
 body { @apply antialiased text-slate-800 bg-slate-50; }
