@@ -41,3 +41,7 @@ body { @apply antialiased text-slate-800 bg-slate-50; }
   @apply inline-flex items-center gap-2 px-4 py-2 border transition;
 }
 .btn-outline:hover { @apply bg-slate-100; }
+
+.badge {
+  @apply inline-flex items-center gap-2 text-xs px-2.5 py-1 rounded-full border text-slate-600;
+}

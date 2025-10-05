@@ -10,6 +10,7 @@ export default function AppNav() {
       <NavLink to="/" end className={linkClass}>Home</NavLink>
       <NavLink to="/sermons" className={linkClass}>Sermons</NavLink>
       <NavLink to="/videos" className={linkClass}>Videos</NavLink>
+      <NavLink to="/give" className={linkClass}>Give</NavLink>
       <NavLink to="/about" className={linkClass}>About</NavLink>
     </div>
   )

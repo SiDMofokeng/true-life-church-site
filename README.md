@@ -43,3 +43,11 @@ This site uses a Netlify function to call the YouTube Data API v3 and return rec
 ### Podcast: Episode Details
 - Each episode now links to `/sermons/:eid` where `eid` is a base64url of the episode id.
 - Detail page includes audio player, clean download filename, and share links (WhatsApp, X, Facebook).
+
+## Give Page
+- Route: `/give`
+- Buttons are placeholders — replace `href="#"` with:
+  - PayPal: `https://paypal.me/<handle>`
+  - Stripe Checkout link (from Dashboard)
+  - Planning Center, Tithe.ly, or your provider URL
+- Bank/EFT details live in `src/pages/Give.jsx`.

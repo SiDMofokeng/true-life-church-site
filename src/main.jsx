@@ -12,12 +12,15 @@ import NotFound from './pages/NotFound.jsx'
 
 import SermonDetail from './pages/SermonDetail.jsx'
 
+import Give from './pages/Give.jsx'
+
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
   { path: '/about', element: <About /> },
   { path: '/sermons', element: <Sermons /> },
   { path: '/sermons/:eid', element: <SermonDetail /> },
   { path: '/videos', element: <Videos /> },
+  { path: '/give', element: <Give /> },
   { path: '*', element: <NotFound /> },
 ])
 

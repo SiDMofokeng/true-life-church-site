@@ -26,6 +26,7 @@ export default function Home() {
           <div className="mt-8 flex flex-wrap gap-3 justify-center">
             <Link to="/sermons" className="btn-primary">Browse Sermons</Link>
             <Link to="/videos" className="btn-outline">Watch Videos</Link>
+            <Link to="/give" className="btn-outline">Give</Link>
           </div>
         </div>
       </section>
