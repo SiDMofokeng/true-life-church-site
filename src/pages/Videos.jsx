@@ -35,6 +35,10 @@ export default function Videos() {
         {status === 'loading' && <p className="muted">Loading videos…</p>}
         {status === 'error' && <p className="text-red-600">Could not load videos.</p>}
 
+        {status === 'ready' && list.length === 0 && (
+          <p className="muted">No videos found yet.</p>
+        )}
+
         {status === 'ready' && (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {list.map((v) => (

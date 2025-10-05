@@ -4,6 +4,7 @@ import Modal from './Modal.jsx'
 export default function VideoModal({ open, onClose, video }) {
   const vid = video?.id
   const title = video?.title || 'YouTube video'
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
   const src = vid ? `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0` : ''
 
   return (

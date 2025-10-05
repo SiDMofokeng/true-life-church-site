@@ -36,6 +36,10 @@ export default function Sermons() {
         {status === 'loading' && <p className="muted">Loading episodes…</p>}
         {status === 'error' && <p className="text-red-600">Could not load episodes.</p>}
 
+        {status === 'ready' && data.episodes.length === 0 && (
+          <p className="muted">No sermons available yet.</p>
+        )}
+
         {status === 'ready' && (
           <div className="grid md:grid-cols-2 gap-6">
             {data.episodes.map((ep) => (

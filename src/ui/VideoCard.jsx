@@ -8,7 +8,13 @@ export default function VideoCard({ v, onOpen }) {
     >
       <div className="aspect-video rounded-xl overflow-hidden bg-slate-200">
         {v.thumbnail && (
-          <img src={v.thumbnail} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <img
+            src={v.thumbnail}
+            alt={v.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
         )}
       </div>
       <h3 className="font-semibold mt-3 line-clamp-2">{v.title}</h3>

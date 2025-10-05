@@ -1,16 +1,20 @@
 // src/ui/Modal.jsx
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function Modal({ open, onClose, children, ariaLabel = 'Dialog' }) {
+
+  const openerRef = useRef(null)
+
   useEffect(() => {
-    if (!open) return
+    if (open) openerRef.current = document.activeElement
     const onKey = (e) => { if (e.key === 'Escape') onClose?.() }
     document.addEventListener('keydown', onKey)
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
+      document.body.style.overflow = 
+      openerRef.current?.focus?.()
     }
   }, [open, onClose])
 
