@@ -12,6 +12,7 @@ export default function AppNav() {
       <NavLink to="/videos" className={linkClass}>Videos</NavLink>
       <NavLink to="/give" className={linkClass}>Give</NavLink>
       <NavLink to="/about" className={linkClass}>About</NavLink>
+      <NavLink to="/contact" className={linkClass}>Contact</NavLink>
     </div>
   )
 }

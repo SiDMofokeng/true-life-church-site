@@ -14,6 +14,9 @@ import SermonDetail from './pages/SermonDetail.jsx'
 
 import Give from './pages/Give.jsx'
 
+import Contact from './pages/Contact.jsx'
+import ContactSent from './pages/ContactSent.jsx'
+
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
   { path: '/about', element: <About /> },
@@ -21,6 +24,8 @@ const router = createBrowserRouter([
   { path: '/sermons/:eid', element: <SermonDetail /> },
   { path: '/videos', element: <Videos /> },
   { path: '/give', element: <Give /> },
+  { path: '/contact', element: <Contact /> },
+  { path: '/contact/sent', element: <ContactSent /> },
   { path: '*', element: <NotFound /> },
 ])
 
