@@ -18,8 +18,8 @@ export default function Home() {
       if (!active) return
       const eps = epRes.status === 'fulfilled' ? (epRes.value.episodes || []) : []
       const vids = vidRes.status === 'fulfilled' ? (vidRes.value.videos || []) : []
-      setEpisodes(eps.slice(0, 3))
-      setVideos(vids.slice(0, 3))
+      setEpisodes(eps.slice(0, 1))   // ⬅️ one sermon
+      setVideos(vids.slice(0, 2))    // ⬅️ two videos
       setLoading(false)
     })
     return () => { active = false }
@@ -66,25 +66,22 @@ export default function Home() {
             <p className="muted">No sermons available yet.</p>
           )}
 
-          <ul className="space-y-3">
-            {episodes.map((ep) => {
-              const eid = b64u.encode(ep.id || ep.link || ep.title)
-              return (
-                <li key={eid} className="rounded-xl border p-3">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-sm muted">{fmtDate(ep.pubDate)} {ep.duration ? `• ${ep.duration}` : ''}</p>
-                      <h3 className="font-medium">{ep.title}</h3>
-                    </div>
-                    <div className="shrink-0 flex gap-2">
-                      <a className="btn-outline" href={ep.audioUrl} download={toFile(ep.title) + '.mp3'}>Download</a>
-                      <Link className="btn-primary" to={`/sermons/${eid}`}>Details</Link>
-                    </div>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
+        <ul className="grid grid-cols-1 sm:grid-cols-1 gap-3">
+          {episodes.map((ep) => {
+            const eid = b64u.encode(ep.id || ep.link || ep.title)
+            return (
+              <li key={eid} className="rounded-xl border p-3">
+                <p className="text-sm muted">{fmtDate(ep.pubDate)} {ep.duration ? `• ${ep.duration}` : ''}</p>
+                <h3 className="font-medium mt-1 line-clamp-2">{ep.title}</h3>
+                <div className="mt-3 flex gap-2">
+                  <a className="btn-outline" href={ep.audioUrl} download={toFile(ep.title)+'.mp3'}>Download</a>
+                  <Link className="btn-primary" to={`/sermons/${eid}`}>Details</Link>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+
         </div>
 
         {/* Videos highlight */}
@@ -99,26 +96,27 @@ export default function Home() {
             <p className="muted">No videos found yet.</p>
           )}
 
-          <ul className="grid sm:grid-cols-2 gap-3">
-            {videos.map((v) => (
-              <li key={v.id} className="rounded-xl border overflow-hidden">
-                <div className="aspect-video w-full bg-slate-200">
-                  <img
-                    src={v.thumbnail}
-                    alt={v.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="p-3 space-y-1">
-                  <h3 className="font-medium line-clamp-2">{v.title}</h3>
-                  <p className="muted text-sm">{fmtDate(v.publishedAt)}</p>
-                  <Link to="/videos" className="underline hover:no-underline text-sm">Watch on Videos →</Link>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {videos.map((v) => (
+            <li key={v.id} className="rounded-xl border overflow-hidden">
+              <div className="aspect-video w-full bg-slate-200">
+                <img
+                  src={v.thumbnail}
+                  alt={v.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="p-3 space-y-1">
+                <h3 className="font-medium line-clamp-2">{v.title}</h3>
+                <p className="muted text-sm">{fmtDate(v.publishedAt)}</p>
+                <Link to="/videos" className="underline hover:no-underline text-sm">Watch on Videos →</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+
         </div>
       </section>
     </RootLayout>
