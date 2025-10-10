@@ -1,6 +1,6 @@
+import SkipLink from './SkipLink.jsx'
 // src/ui/Navbar.jsx
 import AppNav from './AppNav.jsx'
-import SkipLink from './SkipLink.jsx'
 
 export default function Navbar() {
   return (
