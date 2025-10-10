@@ -66,11 +66,11 @@ export default function Home() {
             <p className="muted">No sermons available yet.</p>
           )}
 
-        <ul className="grid grid-cols-1 sm:grid-cols-1 gap-3">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {episodes.map((ep) => {
             const eid = b64u.encode(ep.id || ep.link || ep.title)
             return (
-              <li key={eid} className="rounded-xl border p-3">
+              <li key={eid} className="rounded-xl border p-4">
                 <p className="text-sm muted">{fmtDate(ep.pubDate)} {ep.duration ? `• ${ep.duration}` : ''}</p>
                 <h3 className="font-medium mt-1 line-clamp-2">{ep.title}</h3>
                 <div className="mt-3 flex gap-2">
