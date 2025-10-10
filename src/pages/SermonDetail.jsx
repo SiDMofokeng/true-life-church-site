@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom'
 import RootLayout from '../layouts/RootLayout.jsx'
 import { getEpisodes } from '../lib/podcast.js'
 import { b64u } from '../lib/base64url.js'
+import Breadcrumbs from '../ui/Breadcrumbs.jsx'
+import BackButton from '../ui/BackButton.jsx'
 
 export default function SermonDetail() {
   const { eid } = useParams()           // base64url id
@@ -43,9 +45,22 @@ export default function SermonDetail() {
   return (
     <RootLayout>
       <article className="space-y-6">
-        <header className="space-y-2">
-          <p className="muted text-sm">{formatDate(ep.pubDate)} {ep.duration ? `• ${ep.duration}` : ''}</p>
-          <h1 className="text-3xl font-bold">{ep.title}</h1>
+        <header className="space-y-3">
+          <Breadcrumbs
+            items={[
+              { label: 'Home', to: '/' },
+              { label: 'Sermons', to: '/sermons' },
+              { label: ep.title || 'Message' },
+            ]}
+          />
+
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="muted text-sm">{formatDate(ep.pubDate)} {ep.duration ? `• ${ep.duration}` : ''}</p>
+              <h1 className="text-3xl font-bold">{ep.title}</h1>
+            </div>
+            <BackButton fallback="/sermons" />
+          </div>
         </header>
 
         <audio className="w-full" controls preload="none" src={ep.audioUrl}>
